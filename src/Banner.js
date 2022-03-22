@@ -20,8 +20,6 @@ useEffect(() => {
   fetchData();
 }, []);
 
-console.log(movie)
-
   return (
     <header className="banner"
        style={{
