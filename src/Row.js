@@ -9,14 +9,14 @@ const base_url = "https://image.tmdb.org/t/p/original/";
 function Row({ title, fetchUrl, isLargeRow  }) {
     const [movies, setMovies] = useState ([]);
     const [trailerUrl, setTrailerUrl] = useState("");
-
+ 
     useEffect(() => {
     async function fetchData() {
      const request = await axios.get(fetchUrl);
      setMovies(request.data.results);
-     return request;
+     return request;  
     }
-    fetchData();
+    fetchData(); 
     }, [fetchUrl]);
 
     const opts ={
@@ -32,7 +32,7 @@ function Row({ title, fetchUrl, isLargeRow  }) {
         setTrailerUrl("");
       } else{
         movieTrailer(movie?.name || "")
-        .then(url => {
+        .then((url) => {
           const urlParams = new URLSearchParams (new URL(url).search);
           setTrailerUrl (urlParams.get('v'));
         })
@@ -58,7 +58,7 @@ function Row({ title, fetchUrl, isLargeRow  }) {
         {trailerUrl && <YouTube videoId={trailerUrl} opts={opts}/>}
     </div>
   
-  )
+  );
 }
 
-export default Row
+export default Row;
